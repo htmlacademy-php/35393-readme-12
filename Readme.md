@@ -1,7 +1,7 @@
 # Личный проект «Readme»
 
 * Студент: [Ольга Артемова](https://up.htmlacademy.ru/php/12/user/35393).
-* Наставник: `Неизвестно`.
+* Наставник: [Олег Мифле](https://htmlacademy.ru/profile/id496565).
 
 ---
 
