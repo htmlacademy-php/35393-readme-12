@@ -239,12 +239,14 @@ $posts = [
             </div>
         </div>
         <div class="popular__posts">
+
             <?php foreach ($posts as $post => $val): ?>
             <article class="popular__post post <?=$val['type']; ?>">
                 <header class="post__header">
                     <h2><?=$val['ttl']; ?></h2>
                 </header>
                 <div class="post__main">
+
                     <?php if ($val['type'] == 'post-quote'): ?>
                     <blockquote>
                         <p>
@@ -253,14 +255,17 @@ $posts = [
                         <cite>Неизвестный Автор</cite>
                     </blockquote>
                     <?php endif; ?>
+
                     <?php if ($val['type'] == 'post-text'): ?>
                     <p><?=$val['anons'];?></p>
                     <?php endif; ?>
+
                     <?php if ($val['type'] == 'post-photo'): ?>
                     <div class="post-photo__image-wrapper">
                         <img src="img/<?=$val['anons'];?>" alt="Фото от пользователя" width="360" height="240">
                     </div>
                     <?php endif; ?>
+
                     <?php if ($val['type'] == 'post-link'): ?>
                     <div class="post-link__wrapper">
                         <a class="post-link__external" href="https://<?=$val['anons'];?>" title="Перейти по ссылке">
@@ -276,6 +281,7 @@ $posts = [
                         </a>
                     </div>
                     <?php endif; ?>
+
                     <?php if ($val['type'] == 'post-video'): ?>
                     <div class="post-video__block">
                         <div class="post-video__preview">
@@ -290,6 +296,7 @@ $posts = [
                         </a>
                     </div>
                     <?php endif; ?>
+
                 </div>
                 <footer class="post__footer">
                     <div class="post__author">
@@ -328,6 +335,7 @@ $posts = [
                 </footer>
             </article>
             <?php endforeach; ?>
+
         </div>
     </div>
 </section>
