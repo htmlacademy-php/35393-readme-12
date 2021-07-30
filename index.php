@@ -39,6 +39,25 @@ $posts = [
         'avatar_url' => 'userpic.jpg'
     ]
 ];
+function get_anons($text, $max_length = 300): string {
+    $content = '';
+
+    if (strlen($text) <= $max_length) {
+        $content = '<p>' . $text . '</p>';
+    }
+
+    if (strlen($text) > $max_length) {
+        $anons_text_cut = mb_substr($text, 0, $max_length);
+
+        $anons_text = implode(' ', array_slice(explode(' ', $anons_text_cut), 0 , -1));
+        $anons_text_ending = '...';
+        $anons_more_link = '<a class="post-text__more-link" href="#">Читать далее</a>';
+
+        $content = '<p>' . $anons_text . $anons_text_ending . '</p>' . $anons_more_link;
+    }
+
+    return $content;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -254,7 +273,7 @@ $posts = [
                             </blockquote>
                         <?php endif; ?>
                         <?php if ($val['type'] == 'post-text'): ?>
-                            <p><?=$val['anons'];?></p>
+                            <?=get_anons($val['anons']);?>
                         <?php endif; ?>
                         <?php if ($val['type'] == 'post-photo'): ?>
                             <div class="post-photo__image-wrapper">
