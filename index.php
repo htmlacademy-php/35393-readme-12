@@ -39,7 +39,7 @@ $posts = [
         'avatar_url' => 'userpic.jpg'
     ]
 ];
-function getAnons($text, $max_length = 300): string
+function getAnons(string $text, int $max_length = 300): string
 {
     $content = '';
 
