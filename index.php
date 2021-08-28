@@ -1,7 +1,7 @@
 <?php
 $is_auth = rand(0, 1);
 
-$user_name = 'SJ'; // укажите здесь ваше имя
+$user_name = 'Sage'; // укажите здесь ваше имя
 $posts = [
     [
         'ttl' => 'Цитата',
@@ -39,7 +39,8 @@ $posts = [
         'avatar_url' => 'userpic.jpg'
     ]
 ];
-function getAnons($text, $max_length = 300): string {
+function getAnons($text, $max_length = 300): string
+{
     $content = '';
 
     if (strlen($text) <= $max_length) {
