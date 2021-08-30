@@ -1,7 +1,7 @@
 <?php
 $is_auth = rand(0, 1);
 
-$user_name = 'SJ'; // укажите здесь ваше имя
+$user_name = 'Sage'; // укажите здесь ваше имя
 $posts = [
     [
         'ttl' => 'Цитата',
@@ -39,6 +39,31 @@ $posts = [
         'avatar_url' => 'userpic.jpg'
     ]
 ];
+function getAnons(string $text, int $maxLength = 300): string
+{
+    $content = '';
+
+    if (strlen($text) <= $maxLength) {
+        $content = '<p>' . $text . '</p>';
+    }
+
+    if (strlen($text) > $maxLength) {
+        $anonsArr = explode(" ", $text);
+        $anonsTextCut = '';
+        $anonsTextEnding = '...';
+        $anonsMoreLink = '<a class="post-text__more-link" href="#">Читать далее</a>';
+        $index = 0;
+
+        while (strlen($anonsTextCut) + 1 < $maxLength) {
+            $anonsTextCut = $anonsTextCut . ' ' . $anonsArr[$index];
+            $index++;
+        }
+
+        $content = '<p>' . $anonsTextCut . $anonsTextEnding . '</p>' . $anonsMoreLink;
+    }
+
+    return $content;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -254,7 +279,7 @@ $posts = [
                             </blockquote>
                         <?php endif; ?>
                         <?php if ($val['type'] == 'post-text'): ?>
-                            <p><?=$val['anons'];?></p>
+                            <?=getAnons($val['anons']);?>
                         <?php endif; ?>
                         <?php if ($val['type'] == 'post-photo'): ?>
                             <div class="post-photo__image-wrapper">
