@@ -39,27 +39,27 @@ $posts = [
         'avatar_url' => 'userpic.jpg'
     ]
 ];
-function getAnons(string $text, int $max_length = 300): string
+function getAnons(string $text, int $maxLength = 300): string
 {
     $content = '';
 
-    if (strlen($text) <= $max_length) {
+    if (strlen($text) <= $maxLength) {
         $content = '<p>' . $text . '</p>';
     }
 
-    if (strlen($text) > $max_length) {
-        $anons_arr = explode(" ", $text);
-        $anons_text_cut = '';
-        $anons_text_ending = '...';
-        $anons_more_link = '<a class="post-text__more-link" href="#">Читать далее</a>';
+    if (strlen($text) > $maxLength) {
+        $anonsArr = explode(" ", $text);
+        $anonsTextCut = '';
+        $anonsTextEnding = '...';
+        $anonsMoreLink = '<a class="post-text__more-link" href="#">Читать далее</a>';
         $index = 0;
 
-        while (strlen($anons_text_cut) + 1 < $max_length) {
-            $anons_text_cut = $anons_text_cut . ' ' . $anons_arr[$index];
+        while (strlen($anonsTextCut) + 1 < $maxLength) {
+            $anonsTextCut = $anonsTextCut . ' ' . $anonsArr[$index];
             $index++;
         }
 
-        $content = '<p>' . $anons_text_cut . $anons_text_ending . '</p>' . $anons_more_link;
+        $content = '<p>' . $anonsTextCut . $anonsTextEnding . '</p>' . $anonsMoreLink;
     }
 
     return $content;
